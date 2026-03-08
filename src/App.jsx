@@ -68,7 +68,7 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // ============================================================
-  // INITIAL DATA LOAD
+  // INITIAL DATA LOAD + AUTO-LOGIN
   // ============================================================
   useEffect(() => {
     async function loadInitialData() {
@@ -81,6 +81,22 @@ export default function App() {
         setPlayers(playersData);
         setLeaderboard(leaderboardData);
         setFeedItems(feedData);
+
+        // Auto-login if user was previously authenticated on this device
+        const savedUserId = localStorage.getItem('eclectic_user_id');
+        if (savedUserId) {
+          try {
+            const card = await fetchPlayerCard(savedUserId);
+            setSelectedUserId(savedUserId);
+            setBestScores(card.scores);
+            setRoundsLogged(card.roundsPlayed);
+            setIsAuthenticated(true);
+          } catch (err) {
+            // Saved user no longer valid, clear storage
+            localStorage.removeItem('eclectic_user_id');
+            console.error('Auto-login failed, cleared saved session:', err);
+          }
+        }
       } catch (err) {
         console.error('Failed to load initial data:', err);
       } finally {
@@ -129,6 +145,8 @@ export default function App() {
         setBestScores(card.scores);
         setRoundsLogged(card.roundsPlayed);
         setIsAuthenticated(true);
+        // Persist login on this device
+        localStorage.setItem('eclectic_user_id', selectedUserId);
       } else {
         setLoginError('Incorrect PIN. Try again.');
         setPin('');
