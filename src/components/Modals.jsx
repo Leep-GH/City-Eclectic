@@ -76,7 +76,6 @@ export function ConfirmModal({
   roundsLogged 
 }) {
   const burnEntries = Object.entries(stagedBurns);
-  const hasBurns = burnEntries.length > 0;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} zIndex={80}>
@@ -97,12 +96,7 @@ export function ConfirmModal({
           Holes Improved
         </h4>
         
-        {!hasBurns ? (
-          <div className="bg-white p-4 rounded-xl border border-gray-200 text-center text-gray-500 text-sm">
-            No improvements recorded for this round.
-          </div>
-        ) : (
-          burnEntries.map(([holeStr, data]) => {
+        {burnEntries.map(([holeStr, data]) => {
             const holeNum = parseInt(holeStr);
             const holeData = COURSE_DATA.find(h => h.hole === holeNum);
             const isExceptional = data.newScore >= SCORE_THRESHOLDS.EAGLE_OR_BETTER;
@@ -127,8 +121,7 @@ export function ConfirmModal({
                 </div>
               </div>
             );
-          })
-        )}
+        })}
       </div>
 
       <div className="p-5 border-t border-gray-100 flex gap-3 bg-white">

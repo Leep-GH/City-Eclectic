@@ -176,8 +176,9 @@ export default function App() {
   }, []);
 
   const handleInitiateSubmit = useCallback(() => {
+    if (Object.keys(stagedBurns).length === 0) return;
     setShowConfirmModal(true);
-  }, []);
+  }, [stagedBurns]);
 
   const handleConfirmSubmit = useCallback(async () => {
     try {

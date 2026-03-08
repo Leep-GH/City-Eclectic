@@ -27,16 +27,17 @@ export function EntryControlBar({
         {/* Submit button */}
         <button 
           onClick={onSubmit}
+          disabled={!hasBurns}
           className={`flex-1 flex items-center justify-center gap-2 p-4 rounded-xl font-bold transition-all ${
             hasBurns 
               ? 'bg-emerald-700 hover:bg-emerald-800 text-white' 
-              : 'bg-gray-800 hover:bg-gray-900 text-white'
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
           }`}
         >
           <CheckCircle2 className="w-5 h-5" />
           {hasBurns 
             ? `Review ${stagedBurnsCount} ${pluralize(stagedBurnsCount, 'Burn')}` 
-            : 'Log Blank Round'
+            : 'Select holes to improve'
           }
         </button>
       </div>
