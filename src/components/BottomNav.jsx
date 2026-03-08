@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, LayoutGrid, Activity } from 'lucide-react';
+import { Trophy, Home, Activity } from 'lucide-react';
 import { TABS } from '../constants';
 
 /**
@@ -7,14 +7,14 @@ import { TABS } from '../constants';
  */
 export function BottomNav({ activeTab, onTabChange }) {
   const tabs = [
-    { id: TABS.HOME, label: 'Leaderboard', icon: LayoutGrid },
+    { id: TABS.HOME, label: 'Home', icon: Home },
     { id: TABS.CARD, label: 'My Card', icon: Trophy },
     { id: TABS.FEED, label: 'Feed', icon: Activity },
   ];
 
   return (
     <nav 
-      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40"
+      className="flex-shrink-0 bg-white border-t border-gray-200 z-40"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="flex justify-around max-w-md mx-auto">
@@ -24,16 +24,16 @@ export function BottomNav({ activeTab, onTabChange }) {
             <button
               key={id}
               onClick={() => onTabChange(id)}
-              className={`flex flex-col items-center justify-center py-3 px-6 min-h-[60px] flex-1 transition-colors touch-target ${
+              className={`flex flex-col items-center justify-center py-4 px-8 min-h-[64px] flex-1 transition-colors ${
                 isActive 
                   ? 'text-emerald-700' 
-                  : 'text-gray-400 hover:text-gray-600'
+                  : 'text-gray-400 active:text-gray-600'
               }`}
               aria-label={label}
               aria-current={isActive ? 'page' : undefined}
             >
-              <Icon className={`w-6 h-6 ${isActive ? 'stroke-[2.5]' : ''}`} />
-              <span className={`text-[10px] font-semibold mt-1 ${
+              <Icon className={`w-7 h-7 ${isActive ? 'stroke-[2.5]' : ''}`} />
+              <span className={`text-xs font-semibold mt-1 ${
                 isActive ? 'text-emerald-700' : 'text-gray-400'
               }`}>
                 {label}

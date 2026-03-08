@@ -39,8 +39,15 @@ input, textarea, [contenteditable] {
 }
 
 #root {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Ensure proper mobile viewport */
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Golf Ball Background */

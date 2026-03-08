@@ -13,7 +13,7 @@ export function EntryControlBar({
   const hasBurns = stagedBurnsCount > 0;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 z-50 pb-safe">
+    <div className="flex-shrink-0 p-4 bg-white border-t border-gray-200 z-50 pb-safe">
       <div className="max-w-md mx-auto flex gap-3">
         {/* Cancel button */}
         <button 

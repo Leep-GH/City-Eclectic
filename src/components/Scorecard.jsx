@@ -11,10 +11,10 @@ function ViewingHeader({ player, onBack }) {
     <div className="flex items-center gap-3 card p-4">
       <button 
         onClick={onBack} 
-        className="p-2 bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition-colors"
+        className="p-3 bg-gray-100 rounded-full text-gray-500 active:bg-gray-200 transition-colors"
         aria-label="Go back"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
       <div>
         <h2 className="text-gray-900 font-bold text-lg">{player.name}'s Card</h2>

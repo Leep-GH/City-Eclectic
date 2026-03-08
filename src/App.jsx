@@ -282,10 +282,11 @@ export default function App() {
   const showHeaderStats = activeTab === TABS.CARD && !viewingPlayer && !isEnteringRound;
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans pb-28 selection:bg-emerald-200 selection:text-emerald-900">
+    <div className="h-[100dvh] flex flex-col bg-white text-gray-900 font-sans selection:bg-emerald-200 selection:text-emerald-900">
       {/* Header */}
       <AppHeader
         onShowRules={() => setShowRulesModal(true)}
+        onGoHome={() => handleTabChange(TABS.HOME)}
         showStats={showHeaderStats}
         totalPoints={totalPoints}
         roundsLogged={roundsLogged}
@@ -293,8 +294,9 @@ export default function App() {
         userInitials={activeUser?.initials || ''}
       />
 
-      {/* Main Content */}
-      <main className="max-w-md mx-auto p-4 mt-2 main-content scroll-smooth">
+      {/* Main Content - scrollable area */}
+      <main className="flex-1 overflow-y-auto overscroll-contain">
+        <div className="max-w-md mx-auto p-4 mt-2 pb-4">
         {/* HOME TAB */}
         {activeTab === TABS.HOME && (
           viewingPlayer ? (
@@ -339,6 +341,7 @@ export default function App() {
         {activeTab === TABS.FEED && (
           <ActivityFeed burns={feedItems} />
         )}
+        </div>
       </main>
 
       {/* Modals */}
