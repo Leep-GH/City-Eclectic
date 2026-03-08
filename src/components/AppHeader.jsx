@@ -1,9 +1,9 @@
 import React from 'react';
-import { Menu, Home } from 'lucide-react';
+import { BookOpen, Home } from 'lucide-react';
 
 
 /**
- * App header - Clean minimal design with hamburger menu and avatar
+ * App header - Clean minimal design with rules button and home
  */
 export function AppHeader({ 
   onShowRules,
@@ -17,13 +17,14 @@ export function AppHeader({
   return (
     <header className="flex-shrink-0 z-30 bg-white border-b border-gray-100 py-4 px-5">
       <div className="flex justify-between items-center max-w-md mx-auto">
-        {/* Menu button */}
+        {/* Rules button */}
         <button 
           onClick={onShowRules}
-          className="p-2 -ml-2 rounded-lg hover:bg-gray-100 transition-colors touch-target"
-          aria-label="Menu"
+          className="flex items-center gap-1.5 px-3 py-2 -ml-2 rounded-lg hover:bg-gray-100 transition-colors touch-target"
+          aria-label="Rules"
         >
-          <Menu className="w-6 h-6 text-gray-700" />
+          <BookOpen className="w-5 h-5 text-gray-700" />
+          <span className="text-sm font-semibold text-gray-700">Rules</span>
         </button>
         
         {/* Center - User greeting (when on My Card) */}
