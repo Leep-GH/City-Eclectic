@@ -150,15 +150,14 @@ function HoleRow({
           <p className="text-center text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
             Stableford Points
           </p>
-          <div className="flex justify-center gap-1.5 max-w-sm mx-auto">
+          <div className="flex justify-center gap-2 max-w-xs mx-auto">
             {Array.from({ length: MAX_STABLEFORD_POINTS + 1 }, (_, pts) => {
-              const pointLabels = ['—', 'Dbl+', 'Bog', 'Par', 'Birdie', 'Eagle', 'Alba'];
               const isCurrent = pts === currentBest;
               const isLower = pts < currentBest;
               const isSelected = staged && staged.newScore === pts;
               const isExceptional = pts >= SCORE_THRESHOLDS.EAGLE_OR_BETTER;
               
-              let btnClass = "flex flex-col items-center justify-center w-12 h-14 rounded-xl font-bold transition-all ";
+              let btnClass = "w-11 h-11 rounded-full font-bold text-lg flex items-center justify-center transition-all ";
               
               if (isSelected) {
                 btnClass += isExceptional 
@@ -178,12 +177,9 @@ function HoleRow({
                   disabled={isLower || isCurrent} 
                   onClick={() => onStageBurn(holeData.hole, pts)} 
                   className={btnClass}
-                  aria-label={`${pts} points - ${pointLabels[pts]}`}
+                  aria-label={`${pts} points`}
                 >
-                  <span className="text-lg leading-none">{pts}</span>
-                  <span className={`text-[9px] leading-none mt-0.5 font-medium ${
-                    isSelected ? 'opacity-80' : isLower ? 'text-gray-400' : 'text-gray-400'
-                  }`}>{pointLabels[pts]}</span>
+                  {pts}
                 </button>
               );
             })}
