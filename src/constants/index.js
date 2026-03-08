@@ -4,7 +4,7 @@
 
 // Season rules
 export const MAX_ROUNDS_PER_SEASON = 18;
-export const MAX_STABLEFORD_POINTS = 5;
+export const MAX_STABLEFORD_POINTS = 6;
 
 // Score thresholds for visual styling
 export const SCORE_THRESHOLDS = {

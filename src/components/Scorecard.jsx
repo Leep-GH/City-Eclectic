@@ -73,7 +73,7 @@ function EntryModeHeader() {
           <Activity className="w-5 h-5 text-emerald-600" /> Logging Round
         </h2>
         <p className="text-xs text-emerald-600 mt-1">
-          Select holes to record improved scores.
+          Tap a hole to enter your <span className="font-bold">Stableford points</span> (not the hole score).
         </p>
       </div>
     </div>
@@ -147,14 +147,18 @@ function HoleRow({
       {/* Expanded score picker */}
       {isExpanded && isEntryMode && (
         <div className="bg-gray-50 p-5 border-t border-gray-100">
-          <div className="flex justify-center gap-2 max-w-xs mx-auto">
+          <p className="text-center text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            Stableford Points
+          </p>
+          <div className="flex justify-center gap-1.5 max-w-sm mx-auto">
             {Array.from({ length: MAX_STABLEFORD_POINTS + 1 }, (_, pts) => {
+              const pointLabels = ['—', 'Dbl+', 'Bog', 'Par', 'Birdie', 'Eagle', 'Alba'];
               const isCurrent = pts === currentBest;
               const isLower = pts < currentBest;
               const isSelected = staged && staged.newScore === pts;
               const isExceptional = pts >= SCORE_THRESHOLDS.EAGLE_OR_BETTER;
               
-              let btnClass = "w-11 h-11 rounded-full font-bold text-lg flex items-center justify-center transition-all ";
+              let btnClass = "flex flex-col items-center justify-center w-12 h-14 rounded-xl font-bold transition-all ";
               
               if (isSelected) {
                 btnClass += isExceptional 
@@ -174,9 +178,12 @@ function HoleRow({
                   disabled={isLower || isCurrent} 
                   onClick={() => onStageBurn(holeData.hole, pts)} 
                   className={btnClass}
-                  aria-label={`Score ${pts} points`}
+                  aria-label={`${pts} points - ${pointLabels[pts]}`}
                 >
-                  {pts}
+                  <span className="text-lg leading-none">{pts}</span>
+                  <span className={`text-[9px] leading-none mt-0.5 font-medium ${
+                    isSelected ? 'opacity-80' : isLower ? 'text-gray-400' : 'text-gray-400'
+                  }`}>{pointLabels[pts]}</span>
                 </button>
               );
             })}
@@ -248,7 +255,7 @@ export function Scorecard({
         <div className="grid grid-cols-12 gap-2 p-3 bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
           <div className="col-span-6 flex items-center pl-2">Hole</div>
           <div className="col-span-3 text-center">Par/SI</div>
-          <div className="col-span-3 text-center pr-2">Best</div>
+          <div className="col-span-3 text-center pr-2">Best Pts</div>
         </div>
 
         {/* Holes */}

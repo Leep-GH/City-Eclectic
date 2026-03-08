@@ -296,7 +296,7 @@ export default function App() {
 
       {/* Main Content - scrollable area */}
       <main className="flex-1 overflow-y-auto overscroll-contain">
-        <div className="max-w-md mx-auto p-4 mt-2 pb-4">
+        <div className={`max-w-md mx-auto p-4 mt-2 ${isEnteringRound ? 'pb-28' : 'pb-4'}`}>
         {/* HOME TAB */}
         {activeTab === TABS.HOME && (
           viewingPlayer ? (
