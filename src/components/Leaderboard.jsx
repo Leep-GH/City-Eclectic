@@ -1,7 +1,7 @@
 import React from 'react';
 import { Medal, ChevronRight, Crown } from 'lucide-react';
 import { Avatar, RankBadge } from './ui';
-import { MAX_ROUNDS_PER_SEASON } from '../constants';
+
 
 /**
  * Top 3 podium display - Clean minimal design
@@ -109,7 +109,7 @@ export function StandingsList({ players, onSelectPlayer }) {
               <div>
                 <div className="font-semibold text-gray-900">{player.name}</div>
                 <div className="text-xs text-gray-400">
-                  {player.rounds}/{MAX_ROUNDS_PER_SEASON} Rounds
+                  {player.rounds} {player.rounds === 1 ? 'Round' : 'Rounds'} submitted
                 </div>
               </div>
             </div>

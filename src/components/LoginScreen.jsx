@@ -168,7 +168,7 @@ export function LoginScreen({
           {/* Footer */}
           <div className="mt-12 text-center animate-fade-in delay-300">
             <p className="text-sm text-gray-400">
-              Season 2026 • 18 Rounds
+              Season 2026
             </p>
           </div>
         </div>

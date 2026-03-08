@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Info } from 'lucide-react';
-import { MAX_ROUNDS_PER_SEASON } from '../constants';
+
 
 /**
  * App header - Clean minimal design with hamburger menu and avatar
