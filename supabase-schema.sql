@@ -95,7 +95,9 @@ CREATE POLICY "Anyone can insert activity feed"
 -- ============================================================
 -- HELPER VIEW: Leaderboard (ranked by total_points DESC)
 -- ============================================================
-CREATE OR REPLACE VIEW leaderboard AS
+CREATE OR REPLACE VIEW leaderboard
+  WITH (security_invoker = true)
+AS
 SELECT 
   p.id,
   p.name,

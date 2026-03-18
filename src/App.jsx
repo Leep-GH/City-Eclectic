@@ -300,7 +300,7 @@ export default function App() {
   const showHeaderStats = activeTab === TABS.CARD && !viewingPlayer && !isEnteringRound;
 
   return (
-    <div className="h-[100dvh] flex flex-col bg-white text-gray-900 font-sans selection:bg-emerald-200 selection:text-emerald-900">
+    <div className="h-full flex flex-col bg-white text-gray-900 font-sans selection:bg-emerald-200 selection:text-emerald-900">
       {/* Header */}
       <AppHeader
         onShowRules={() => setShowRulesModal(true)}
