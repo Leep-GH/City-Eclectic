@@ -27,13 +27,17 @@ export function AppHeader({
           <span className="text-sm font-semibold text-gray-700">Rules</span>
         </button>
         
-        {/* Center - User greeting (when on My Card) */}
-        {showStats && userName && (
-          <div className="flex-1 text-center">
-            <h1 className="text-xl font-bold text-gray-900">{userName.split(' ')[0]}</h1>
-            <p className="text-sm text-emerald-600 font-medium">Welcome Back!</p>
-          </div>
-        )}
+        {/* Center - App title or user greeting */}
+        <div className="flex-1 text-center">
+          {showStats && userName ? (
+            <>
+              <h1 className="text-xl font-bold text-gray-900">{userName.split(' ')[0]}</h1>
+              <p className="text-sm text-emerald-600 font-medium">Welcome Back!</p>
+            </>
+          ) : (
+            <p className="text-sm font-bold text-gray-600 uppercase tracking-widest">Newcastle Eclectic</p>
+          )}
+        </div>
         
         {/* Right - Home button */}
         <button

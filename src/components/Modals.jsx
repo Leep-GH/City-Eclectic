@@ -32,7 +32,7 @@ export function RulesModal({ isOpen, onClose }) {
     {
       num: 5,
       title: 'Tie-Breakers',
-      desc: 'In the event of a tie for Total Eclectic Points at the end of the season, standard countback rules will apply.'
+      desc: 'If two or more players finish on the same total points, the winner is decided by countback: (1) Best scores on holes 10–18. If still tied: (2) holes 13–18. If still tied: (3) holes 16–18. If still tied: (4) hole 18 alone. If still tied after all of that: (5) most rounds played wins. All countback is calculated automatically from your 18-hole card.'
     },
     {
       num: 6,

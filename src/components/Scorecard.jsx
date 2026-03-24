@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, ChevronLeft, Plus, Activity, TrendingUp, Target } from 'lucide-react';
+import { Flame, ChevronLeft, Plus, Activity, TrendingUp, Target, Trophy } from 'lucide-react';
 import { COURSE_DATA, SCORE_THRESHOLDS, MAX_STABLEFORD_POINTS } from '../constants';
 import { getOrdinalSuffix, formatScore } from '../utils';
 
@@ -43,9 +43,11 @@ function ProfileBanner({ user, pointsToLeader }) {
               HCP: {user.hcp}
             </span>
           </h2>
-          <p className="text-sm text-gray-500 mt-0.5 flex items-center gap-1">
-            <TrendingUp className="w-4 h-4 text-emerald-500" />
-            Currently in <span className="text-emerald-600 font-semibold">{getOrdinalSuffix(user.rank)}</span> Place
+          <p className="text-sm text-gray-500 mt-1 flex items-center gap-1.5">
+            <TrendingUp className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+            <span className="text-emerald-600 font-semibold">{getOrdinalSuffix(user.rank)} Place</span>
+            <span className="text-gray-300">·</span>
+            <span className="font-semibold text-gray-700">{user.points} pts</span>
           </p>
         </div>
       </div>
@@ -54,8 +56,10 @@ function ProfileBanner({ user, pointsToLeader }) {
         <div className="text-xs text-gray-400 uppercase tracking-wider mb-1 flex items-center gap-1 justify-end">
           <Target className="w-3 h-3" /> Target
         </div>
-        <div className="text-sm font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">
-          {pointsToLeader === 0 ? '🏆 Leader' : `+${pointsToLeader} pts`}
+        <div className="text-sm font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+          {pointsToLeader === 0 ? (
+            <><Trophy className="w-4 h-4 text-amber-500" /> Leader</>
+          ) : `+${pointsToLeader} pts`}
         </div>
       </div>
     </div>
@@ -269,6 +273,17 @@ export function Scorecard({
               onClearStaged={onClearStaged}
             />
           ))}
+        </div>
+
+        {/* Totals row */}
+        <div className="grid grid-cols-12 gap-2 p-3 bg-gray-50 border-t border-gray-200 items-center">
+          <div className="col-span-6 pl-10 text-xs font-bold text-gray-500 uppercase tracking-wider">Total</div>
+          <div className="col-span-3" />
+          <div className="col-span-3 flex justify-center pr-1">
+            <span className="text-xl font-black text-emerald-700">
+              {Object.values(scores).reduce((sum, s) => sum + (s || 0), 0)}
+            </span>
+          </div>
         </div>
       </div>
     </div>
