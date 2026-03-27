@@ -37,11 +37,8 @@ function ProfileBanner({ user, pointsToLeader }) {
           {user.initials}
         </div>
         <div>
-          <h2 className="text-gray-900 font-bold text-lg flex items-center gap-2">
+          <h2 className="text-gray-900 font-bold text-lg">
             {user.name}
-            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-semibold" title="Handicap (for reference only — does not affect Stableford scoring)">
-              HCP: {user.hcp}
-            </span>
           </h2>
           <p className="text-sm text-gray-500 mt-1 flex items-center gap-1.5">
             <TrendingUp className="w-4 h-4 text-emerald-500 flex-shrink-0" />
