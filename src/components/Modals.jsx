@@ -27,7 +27,7 @@ export function RulesModal({ isOpen, onClose }) {
     {
       num: 4,
       title: 'Prize Money',
-      desc: 'The prize pot is split across the top 3 finishers: 1st place £75, 2nd place £35, 3rd place £20.'
+      desc: 'The prize pot is split across the top 3 finishers: 1st place £70, 2nd place £40, 3rd place £20.'
     },
     {
       num: 5,
