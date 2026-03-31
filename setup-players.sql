@@ -8,16 +8,21 @@ DELETE FROM activity_feed;
 DELETE FROM eclectic_cards;
 DELETE FROM profiles;
 
--- STEP 2: Insert the 8 players
-INSERT INTO profiles (name, initials, pin_code, handicap) VALUES
-  ('Lee Petrie',       'LP', '3109', 14),
-  ('Alf Mawston',      'AM', '7824', 18),
-  ('Gavin Maxwell',    'GM', '5641', 12),
-  ('Anthony Moody',    'AM', '2356', 16),
-  ('Richard Kerr',     'RK', '6917', 10),
-  ('Mark Edminson',    'ME', '4482', 15),
-  ('Minty Chopra',     'MC', '8159', 8),
-  ('Dicky Rutherford', 'DR', '1734', 20);
+-- STEP 2: Insert the 13 players
+INSERT INTO profiles (name, initials, pin_code) VALUES
+  ('Lee Petrie',       'LP', '3109'),
+  ('Alf Mawston',      'AM', '7824'),
+  ('Gavin Maxwell',    'GM', '5641'),
+  ('Anthony Moody',    'AM', '2356'),
+  ('Richard Kerr',     'RK', '6917'),
+  ('Mark Edminson',    'ME', '4482'),
+  ('Minty Chopra',     'MC', '8159'),
+  ('Dicky Rutherford', 'DR', '1734'),
+  ('Andy Thompson',    'AT', '4728'),
+  ('Cam Thompson',     'CT', '9053'),
+  ('Michael Keen',     'MK', '6315'),
+  ('David Irwin',      'DI', '2847'),
+  ('Darren Naylor',    'DN', '5196');
 
 -- STEP 3: Create blank eclectic cards for each player
 INSERT INTO eclectic_cards (user_id)
@@ -32,3 +37,24 @@ SELECT id FROM profiles;
 -- Mark Edminson: 4482
 -- Minty Chopra: 8159
 -- Dicky Rutherford: 1734
+-- Andy Thompson: 4728
+-- Cam Thompson: 9053
+-- Michael Keen: 6315
+-- David Irwin: 2847
+-- Darren Naylor: 5196
+
+-- ============================================================
+-- ADD NEW PLAYERS ONLY (run this against an existing DB)
+-- Use this instead of the full script above to avoid wiping data
+-- ============================================================
+INSERT INTO profiles (name, initials, pin_code) VALUES
+  ('Andy Thompson', 'AT', '4728'),
+  ('Cam Thompson',  'CT', '9053'),
+  ('Michael Keen',  'MK', '6315'),
+  ('David Irwin',   'DI', '2847'),
+  ('Darren Naylor', 'DN', '5196');
+
+INSERT INTO eclectic_cards (user_id)
+SELECT id FROM profiles
+WHERE name IN ('Andy Thompson', 'Cam Thompson', 'Michael Keen', 'David Irwin', 'Darren Naylor')
+  AND id NOT IN (SELECT user_id FROM eclectic_cards);

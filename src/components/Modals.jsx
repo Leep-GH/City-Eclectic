@@ -26,8 +26,8 @@ export function RulesModal({ isOpen, onClose }) {
     },
     {
       num: 4,
-      title: 'Hole in One Bonus',
-      desc: 'A hole in one takes half the pot! If you achieve a hole in one during the season, you win 50% of the total league prize money.'
+      title: 'Prize Money',
+      desc: 'The prize pot is split across the top 3 finishers: 1st place £75, 2nd place £35, 3rd place £20.'
     },
     {
       num: 5,
