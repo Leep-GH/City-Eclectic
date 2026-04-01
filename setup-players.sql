@@ -21,7 +21,7 @@ INSERT INTO profiles (name, initials, pin_code) VALUES
   ('Andy Thompson',    'AT', '4728'),
   ('Cam Thompson',     'CT', '9053'),
   ('Michael Keen',     'MK', '6315'),
-  ('David Irwin',      'DI', '2847'),
+  ('David Urwin',      'DI', '2847'),
   ('Darren Naylor',    'DN', '5196');
 
 -- STEP 3: Create blank eclectic cards for each player
@@ -40,7 +40,7 @@ SELECT id FROM profiles;
 -- Andy Thompson: 4728
 -- Cam Thompson: 9053
 -- Michael Keen: 6315
--- David Irwin: 2847
+-- David Urwin: 2847
 -- Darren Naylor: 5196
 
 -- ============================================================
@@ -51,10 +51,10 @@ INSERT INTO profiles (name, initials, pin_code) VALUES
   ('Andy Thompson', 'AT', '4728'),
   ('Cam Thompson',  'CT', '9053'),
   ('Michael Keen',  'MK', '6315'),
-  ('David Irwin',   'DI', '2847'),
+  ('David Urwin',   'DI', '2847'),
   ('Darren Naylor', 'DN', '5196');
 
 INSERT INTO eclectic_cards (user_id)
 SELECT id FROM profiles
-WHERE name IN ('Andy Thompson', 'Cam Thompson', 'Michael Keen', 'David Irwin', 'Darren Naylor')
+WHERE name IN ('Andy Thompson', 'Cam Thompson', 'Michael Keen', 'David Urwin', 'Darren Naylor')
   AND id NOT IN (SELECT user_id FROM eclectic_cards);
