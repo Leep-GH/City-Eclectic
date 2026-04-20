@@ -21,7 +21,7 @@ INSERT INTO profiles (name, initials, pin_code) VALUES
   ('Andy Thompson',    'AT', '4728'),
   ('Cam Thompson',     'CT', '9053'),
   ('Michael Keen',     'MK', '6315'),
-  ('David Urwin',      'DI', '2847'),
+  ('David Urwin',      'DU', '2847'),
   ('Darren Naylor',    'DN', '5196');
 
 -- STEP 3: Create blank eclectic cards for each player
